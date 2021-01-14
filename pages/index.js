@@ -9,6 +9,7 @@ export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
+      {/* ページごとにヘッドタグを設定できる */}
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
@@ -37,12 +38,20 @@ export default function Home({ allPostsData }) {
     </Layout>
   )
 }
-
+//ページをビルドする前にデータを取ってくるでー//static generation
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData()//ソートしたマークダウンの配列かな
   return {
-    props: {
+    props: {//propsの値をオブジェクト型で返す
       allPostsData
+    }
+  }
+}
+//サーバーサイドレンダリングの場合はこう書く
+export async function getServerSideProps(context) {
+  return{
+    props: {
+      //コンポーネントに渡すためのprops
     }
   }
 }

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from './layout.module.css'
+import styles from './layout.module.css'//module.cssというファイル名にしたからstyleを使用可能。moduleにするとクラス名の前後に色々つく
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 

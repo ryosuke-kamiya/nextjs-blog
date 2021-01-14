@@ -21,14 +21,16 @@ export default function Post({ postData }) {
   )
 }
 
+//まずここで、どんなページを表示する可能性があるのか判断する
 export async function getStaticPaths() {
   const paths = getAllPostIds()
   return {
-    paths,
-    fallback: false
+    paths,//この中に、これから動的で作られるurlのパスが書かれている。
+    fallback: false//そのパスに該当しない場合、つまりfalseのときは４０４を返す
   }
 }
 
+//実際にビルドする時にそのページの中身を持ってくる。
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
   return {
